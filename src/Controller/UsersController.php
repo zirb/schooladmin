@@ -21,7 +21,7 @@ class UsersController extends AppController
 public function beforeFilter(Event $event)
     {
         parent::beforeFilter($event);
-        $this->Auth->allow(['add', 'logout']);
+        $this->Auth->allow([ 'logout']);
     }
     public function index()
     {
@@ -59,11 +59,11 @@ public function beforeFilter(Event $event)
         if ($this->request->is('post')) {
             $user = $this->Users->patchEntity($user, $this->request->data);
             if ($this->Users->save($user)) {
-                $this->Flash->success(__('The user has been saved.'));
+                $this->Flash->success(__('El usuario ha sido guardado.'));
 
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('The user could not be saved. Please, try again.'));
+                $this->Flash->error(__('El usuario no pudo ser guardado. Intente de nuevo.'));
             }
         }
         $this->set(compact('user'));
@@ -89,7 +89,7 @@ public function beforeFilter(Event $event)
 
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('The user could not be saved. Please, try again.'));
+                $this->Flash->error(__('El usuario no pudo ser guardado. Intente de nuevo.'));
             }
         }
         $this->set(compact('user'));
@@ -108,9 +108,9 @@ public function beforeFilter(Event $event)
         $this->request->allowMethod(['post', 'delete']);
         $user = $this->Users->get($id);
         if ($this->Users->delete($user)) {
-            $this->Flash->success(__('The user has been deleted.'));
+            $this->Flash->success(__('El usuario ha sido borrado.'));
         } else {
-            $this->Flash->error(__('The user could not be deleted. Please, try again.'));
+            $this->Flash->error(__('El usuario no pudo ser borrado. Intente de nuevo.'));
         }
 
         return $this->redirect(['action' => 'index']);
@@ -124,12 +124,18 @@ public function login()
             $this->Auth->setUser($user);
             return $this->redirect($this->Auth->redirectUrl());
         }
-        $this->Flash->error(__('Intentelo de nuevo'));
+        $this->Flash->error(__('Inténtelo de nuevo.'));
     }
 }
 
+public function initialize()
+{
+    parent::initialize();
+    $this->Auth->allow(['logout','add']);
+}
 public function logout()
 {
+    $this->Flash->success('Has salido de tu sesion.');
     return $this->redirect($this->Auth->logout());
 }
 

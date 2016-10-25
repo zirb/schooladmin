@@ -45,18 +45,19 @@ class AppController extends Controller
         $this->loadComponent('Flash');
 
 $this->loadComponent('Auth', [
-'authenticate'=> [
-	'Form'=> [
-		'fields'=> [
-			'username' => 'name',
-			'password' => 'password'
-			]
-		]
-	], 'loginAction' => [
-		'controller'=> 'Users',
-		'action' => 'login'
-]
-]);
+            'authenticate' => [
+                'Form' => [
+                    'fields' => [
+                        'username' => 'email',
+                        'password' => 'password'
+                    ]
+                ]
+            ],'authError' => 'No estás autorizado para entrar a esta área.',
+            'loginAction' => [
+                'controller' => 'Users',
+                'action' => 'login'
+            ]
+        ]);
     }
 
     /**
@@ -76,6 +77,6 @@ $this->loadComponent('Auth', [
 
    public function beforeFilter(Event $event)
     {
-        $this->Auth->allow(['index', 'view', 'display']);
+        $this->Auth->allow(['index']);
     }
 }
