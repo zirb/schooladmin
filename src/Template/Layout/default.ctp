@@ -33,11 +33,11 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
 </head>
-<body>
+<body bgcolor="#E6E6FA">
     <?= $this->Flash->render() ?>
     <?=$this->Flash->render('auth') ?>
 
-    <div class="container">
+    <div class="container" style="bgcolor: #E6E6FA">
         <?= $this->fetch('content') ?>
     </div>
     <footer>
