@@ -15,7 +15,7 @@
             echo $this->Form->input('nombres');
             echo $this->Form->input('apellido_paterno');
             echo $this->Form->input('apellido_materno');
-            echo $this->Form->input('acceso',['options'=>['0'=>'Usuario','1'=>'Docente','2'=>'Administrador']]);
+            echo $this->Form->input('acceso');
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
