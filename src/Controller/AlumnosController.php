@@ -59,7 +59,9 @@ class AlumnosController extends AppController
                 $this->Flash->error(__('The alumno could not be saved. Please, try again.'));
             }
         }
-        $this->set(compact('alumno'));
+        $users = $this->Alumnos->Users->find('list')
+            ->where(['email !=' => 'null']);
+        $this->set(compact('alumno', 'users'));
         $this->set('_serialize', ['alumno']);
     }
 

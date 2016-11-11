@@ -7,7 +7,7 @@
 <div class="users form large-9 medium-8 columns content">
     <?= $this->Form->create($user) ?>
     <fieldset>
-        <legend><?= __('Add User') ?></legend>
+        <legend><?= __('Añadir Usuario') ?></legend>
         <?php
             echo $this->Form->input('email');
             echo $this->Form->input('password');
@@ -15,9 +15,9 @@
             echo $this->Form->input('nombres');
             echo $this->Form->input('apellido_paterno');
             echo $this->Form->input('apellido_materno');
-            echo $this->Form->input('acceso');
+            echo $this->Form->input('acceso',['options'=>['0'=>'Usuario','1'=>'Docente','2'=>'Administrador']]);
         ?>
     </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
+    <?= $this->Form->button(__('Añadir'),['class'=>'btn btn-sm btn-info']) ?>
     <?= $this->Form->end() ?>
 </div>

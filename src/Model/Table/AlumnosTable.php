@@ -33,6 +33,11 @@ class AlumnosTable extends Table
         $this->table('alumnos');
         $this->displayField('id');
         $this->primaryKey('id');
+        
+	$this->belongsTo('Users', [
+            'foreignKey' => 'user_id',
+            'joinType' => 'INNER'
+        ]);
     }
 
     /**
@@ -53,5 +58,11 @@ class AlumnosTable extends Table
             ->notEmpty('id_user');
 
         return $validator;
+    }
+    public function buildRules(RulesChecker $rules)
+    {
+        $rules->add($rules->isUnique(['id_user']));
+        $rules->add($rules->existsIn(['id'], 'Users'));
+        return $rules;
     }
 }

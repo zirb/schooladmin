@@ -37,6 +37,9 @@ class UsersTable extends Table
         $this->primaryKey('id');
 
         $this->addBehavior('Timestamp');
+        $this->hasOne('Alumnos', [
+            'foreignKey' => 'user_id']
+        );
     }
 
     /**

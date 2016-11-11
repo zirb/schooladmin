@@ -9,7 +9,7 @@
     <fieldset>
         <legend><?= __('Add Alumno') ?></legend>
         <?php
-            echo $this->Form->input('id_user');
+            echo $this->Form->input('id_user', ['options' => $users]);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
