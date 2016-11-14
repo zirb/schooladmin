@@ -33,7 +33,7 @@ class AlumnosTable extends Table
         $this->table('alumnos');
         $this->displayField('id');
         $this->primaryKey('id');
-        $this->belongsTo('Users',[
+	$this->belongsTo('Users',[
             'foreignKey' => 'id_user',
             'joinType' => 'INNER',
         ]);
@@ -58,7 +58,7 @@ class AlumnosTable extends Table
 
         return $validator;
     }
-public function buildRules(RulesChecker $rules)
+    public function buildRules(RulesChecker $rules)
     {
         $rules->add($rules->isUnique(['id_user']));
 

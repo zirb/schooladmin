@@ -17,9 +17,8 @@
             echo $this->Form->input('apellido_materno');
             echo $this->Form->input('acceso',['options'=>['0'=>'Usuario','1'=>'Docente','2'=>'Administrador']]);
         ?>
-<?= $this->Form->create($alumno) ?>
-         <?php    echo $this->Form->input('alumno.id_user',['options'=>[$user->id]]);
-?>
+         <?php 
+           echo $this->Form->select('alumno.id_user',[$user->id=>'Alumno', 2=>2, 3, 4, 5],['default' => [$user->id]]); ?>
     </fieldset>
     <?= $this->Form->button(__('Añadir'),['class'=>'btn btn-sm btn-info']) ?>
     <?= $this->Form->end() ?>
