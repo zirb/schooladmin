@@ -8,6 +8,8 @@
             )
         ?></li>
         <li><?= $this->Html->link(__('List Alumnos'), ['action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="alumnos form large-9 medium-8 columns content">
@@ -15,7 +17,7 @@
     <fieldset>
         <legend><?= __('Edit Alumno') ?></legend>
         <?php
-            echo $this->Form->input('id_user');
+            echo $this->Form->input('id_user', ['options' => $users]);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

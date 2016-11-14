@@ -2,6 +2,8 @@
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Html->link(__('New Alumno'), ['action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="alumnos index large-9 medium-8 columns content">
@@ -18,7 +20,7 @@
             <?php foreach ($alumnos as $alumno): ?>
             <tr>
                 <td><?= $this->Number->format($alumno->id) ?></td>
-                <td><?= $this->Number->format($alumno->id_user) ?></td>
+                <td><?= $alumno->has('user') ? $this->Html->link($alumno->user->id, ['controller' => 'Users', 'action' => 'view', $alumno->user->id]) : '' ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $alumno->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $alumno->id]) ?>

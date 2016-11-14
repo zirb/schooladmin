@@ -8,6 +8,8 @@ use Cake\ORM\Entity;
  *
  * @property int $id
  * @property int $id_user
+ *
+ * @property \App\Model\Entity\User $user
  */
 class Alumno extends Entity
 {

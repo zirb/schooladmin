@@ -18,6 +18,9 @@ class AlumnosController extends AppController
      */
     public function index()
     {
+        $this->paginate = [
+            'contain' => ['Users']
+        ];
         $alumnos = $this->paginate($this->Alumnos);
 
         $this->set(compact('alumnos'));
@@ -34,7 +37,7 @@ class AlumnosController extends AppController
     public function view($id = null)
     {
         $alumno = $this->Alumnos->get($id, [
-            'contain' => []
+            'contain' => ['Users']
         ]);
 
         $this->set('alumno', $alumno);
@@ -59,8 +62,7 @@ class AlumnosController extends AppController
                 $this->Flash->error(__('The alumno could not be saved. Please, try again.'));
             }
         }
-        $users = $this->Alumnos->Users->find('list')
-            ->where(['email !=' => 'null']);
+        $users = $this->Alumnos->Users->find('list', ['limit' => 200]);
         $this->set(compact('alumno', 'users'));
         $this->set('_serialize', ['alumno']);
     }
@@ -87,7 +89,8 @@ class AlumnosController extends AppController
                 $this->Flash->error(__('The alumno could not be saved. Please, try again.'));
             }
         }
-        $this->set(compact('alumno'));
+        $users = $this->Alumnos->Users->find('list', ['limit' => 200]);
+        $this->set(compact('alumno', 'users'));
         $this->set('_serialize', ['alumno']);
     }
 
