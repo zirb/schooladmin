@@ -18,7 +18,9 @@
             echo $this->Form->input('acceso',['options'=>['0'=>'Usuario','1'=>'Docente','2'=>'Administrador']]);
         ?>
          <?php 
-           echo $this->Form->select('alumno.id_user',[$user->id=>'Alumno', 2=>2, 3, 4, 5],['default' => [$user->id]]); ?>
+           //echo $this->Form->select('alumno.id_user',[$user->id=>'Alumno', '$user->id'=>2]); 
+//echo $this->Form->checkbox('alumno.id_user',[$user->id],['empty' => '(choose one)']);
+?>
     </fieldset>
     <?= $this->Form->button(__('Añadir'),['class'=>'btn btn-sm btn-info']) ?>
     <?= $this->Form->end() ?>

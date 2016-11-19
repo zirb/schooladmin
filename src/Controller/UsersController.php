@@ -49,8 +49,13 @@ class UsersController extends AppController
     {
         $user = $this->Users->newEntity();
         if ($this->request->is('post')) {
-            $user = $this->Users->patchEntity($user, $this->request->data,[
-'associated'=>['Alumnos']]);
+            if ($this->request->data('acceso')==='0'){
+            $user = $this->Users->patchEntity($user,$this->request->data);}
+	    if ($this->request->data('acceso')==='1'){
+             $this->request->data('alumno.id_user','0');
+	     $user = $this->Users->patchEntity($user,$this->request->data,['associated'=>['Alumnos']]);		
+	    }
+              
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('El usuario ha sido guardado.'));
 
